@@ -1,0 +1,27 @@
+PODS:
+  - AgoraRtcEngine_iOS (3.5.2)
+  - LYCategory (1.13.1)
+  - LYModuleCall (0.1.0):
+    - AgoraRtcEngine_iOS
+    - LYCategory
+
+DEPENDENCIES:
+  - LYModuleCall (from `../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AgoraRtcEngine_iOS
+    - LYCategory
+
+EXTERNAL SOURCES:
+  LYModuleCall:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  AgoraRtcEngine_iOS: 3d13806d67e401298558c9a6fb09340a4299afa2
+  LYCategory: 106df397b4b514a8cbe7f228c34a503142d3b964
+  LYModuleCall: a889a3af85a5731b03d8d5eb51d5d723a2051bbc
+
+PODFILE CHECKSUM: e2450e9a76b71971a26d54daec8db77804e5f01b
+
+COCOAPODS: 1.11.2

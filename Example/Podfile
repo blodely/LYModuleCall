@@ -1,0 +1,27 @@
+#
+# Created by Rick Luo on 2021/08/07.
+# Copyright © 2021 Rick Luo. All rights reserved.
+#
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+use_frameworks!
+
+platform :ios, '11.0'
+
+target 'LYModuleCall_Example' do
+  pod 'LYModuleCall', :path => '../'
+
+end
+
+# MODIFY PODS PROJECT,
+# RESET PROJECT BUILD TARGET OS VERSION.
+post_install do |installer|
+	installer.pods_project.targets.each do |target|
+		target.build_configurations.each do |config|
+			if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 12.0
+				config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
+			end
+		end
+	end
+end
