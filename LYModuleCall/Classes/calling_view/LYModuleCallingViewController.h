@@ -28,8 +28,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <LYModuleCall/LYModuleCallingViewConfig.h>
 
 
 @interface LYModuleCallingViewController : UIViewController
+
+@property (nonatomic, copy) LYModuleCallingViewConfig *config;
 
 @end

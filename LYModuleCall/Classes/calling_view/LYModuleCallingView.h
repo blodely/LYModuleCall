@@ -28,6 +28,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <LYModuleCall/LYModuleCallingViewConfig.h>
 
 
 @interface LYModuleCallingView : UIView
@@ -39,5 +40,7 @@
 @property (weak, nonatomic) UIButton *btnCam;
 @property (weak, nonatomic) UIButton *btnFlip;
 @property (weak, nonatomic) UIButton *btnEnd;
+
+- (instancetype)initWithConfig:(LYModuleCallingViewConfig *)config;
 
 @end

@@ -28,6 +28,7 @@
 //
 
 #import "LYModuleCallingViewController.h"
+#import <LYCategory/LYCategory.h>
 #import <LYModuleCall/LYModuleCallingView.h>
 
 
@@ -74,7 +75,20 @@
 	[super loadView];
 	
 	{
-		LYModuleCallingView *view = [[LYModuleCallingView alloc] init];
+		if (_config == nil) {
+			// MAKE DEFAULT CONFIG
+			_config = [[LYModuleCallingViewConfig alloc] init];
+			
+//			_config.tintColor = [UIColor colorWithHex:@"" andAlpha:1.0];
+//			_config.cameraButtonOn = @"";
+//			_config.cameraButtonOff = @"";
+//			_config.micButtonOn = @"";
+//			_config.micButtonOff = @"";
+//			_config.toggleCameraButton = @"";
+//			_config.hangupButton = @"";
+		}
+		
+		LYModuleCallingView *view = [[LYModuleCallingView alloc] initWithConfig:_config];
 		self.view = view;
 		vMain = view;
 	}

@@ -29,14 +29,26 @@
 
 #import "LYModuleCallingView.h"
 #import <LYCategory/LYCategory.h>
+#import <LYModuleCall/LYModuleCallingViewConfig.h>
 
 
 @interface LYModuleCallingView () {
+	
+	__strong LYModuleCallingViewConfig *config;
+	
 	__weak UIView *vControls;
 }
 @end
 
 @implementation LYModuleCallingView
+
+- (instancetype)initWithConfig:(LYModuleCallingViewConfig *)theconfig {
+	if (self = [super initWithFrame:(CGRect){0, 0, WIDTH, HEIGHT}]) {
+		config = theconfig;
+		[self initial];
+	}
+	return self;
+}
 
 - (instancetype)init {
 	if (self = [super initWithFrame:(CGRect){0, 0, WIDTH, HEIGHT}]) {
@@ -184,6 +196,14 @@
 			[layoutguide[4].leadingAnchor constraintEqualToAnchor:_btnEnd.trailingAnchor].active = YES;
 			[layoutguide[4].rightAnchor constraintEqualToAnchor:vControls.rightAnchor].active = YES;
 		}
+	}
+	
+	if (config != nil) {
+		self.tintColor = config.tintColor;
+		[_btnCam setImage:[UIImage imageNamed:config.cameraButtonOn] forState:UIControlStateNormal];
+		[_btnMute setImage:[UIImage imageNamed:config.micButtonOn] forState:UIControlStateNormal];
+		[_btnFlip setImage:[UIImage imageNamed:config.toggleCameraButton] forState:UIControlStateNormal];
+		[_btnEnd setImage:[UIImage imageNamed:config.hangupButton] forState:UIControlStateNormal];
 	}
 	
 	{
