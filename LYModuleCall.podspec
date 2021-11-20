@@ -22,9 +22,11 @@ TODO: Add long description of the pod here.
 
   s.source_files = 'LYModuleCall/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'LYModuleCall' => ['LYModuleCall/Assets/*.png']
-  # }
+  s.resource_bundles = {
+#   'LYModuleCall' => ['LYModuleCall/Assets/*.png']
+    'LYModuleCall' => ['LYModuleCall/Assets/*.xcassets']
+  }
+# s.resources = 'LYModuleCall/Assets/*.xcassets'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
 
