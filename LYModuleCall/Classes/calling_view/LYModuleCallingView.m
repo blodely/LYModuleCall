@@ -93,6 +93,7 @@
 	{
 		// MARK: LOCAL VIDEO VIEW
 		UIControl *view = [[UIControl alloc] init];
+		view.frame = (CGRect){0, 0, floor(WIDTH * 0.25), floor(WIDTH * 0.25 * 1.33)};
 		view.translatesAutoresizingMaskIntoConstraints = NO;
 		[self addSubview:view];
 		_cLocal = view;
@@ -207,9 +208,10 @@
 		[_btnEnd setImage:[UIImage templateInModCallNamed:config.hangupButton] forState:UIControlStateNormal];
 	}
 	
+	/*
 	{
 		for (UIView *one in self.subviews) {
-			if ([one isKindOfClass:[UIButton class]]) {
+			if ([one isKindOfClass:[UIButton class]] || [one isKindOfClass:[UIControl class]]) {
 				[one border1Px];
 			}
 			for (UIView *two in one.subviews) {
@@ -219,6 +221,7 @@
 			}
 		}
 	}
+	*/
 }
 
 @end

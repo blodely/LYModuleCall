@@ -32,7 +32,18 @@
 
 @interface LYModuleCall : NSObject
 
+/// instance
 + (instancetype)module;
+
+- (void)setupLocalVideoView:(UIView *)localview andRemoteVideoView:(UIView *)remoteview;
+
+- (void)joinChannel:(NSString *)channel byToken:(NSString *)token;
+
+- (void)videoJoined:(void (^)(NSUInteger uid))respBlock;
+
+- (void)leaveChannel;
+
+- (void)destroy;
 
 @end
 

@@ -32,7 +32,14 @@
 #import <AgoraRtcKit/AgoraRtcEngineKit.h>
 
 
-@interface LYModuleCall () {}
+@interface LYModuleCall () <AgoraRtcEngineDelegate> {
+	
+	__strong AgoraRtcEngineKit *kit;
+	
+	__strong AgoraVideoEncoderConfiguration *conf;
+	
+	__strong LYCUInteger blockJoined;
+}
 @end
 
 @implementation LYModuleCall
@@ -41,6 +48,12 @@
 
 - (instancetype)init {
 	if (self = [super init]) {
+		kit = [AgoraRtcEngineKit sharedEngineWithAppId:@"1359d5447c864c529e0a82422bc493b0" delegate:self];
+		
+		[kit enableVideo];
+		
+		conf = [[AgoraVideoEncoderConfiguration alloc] initWithSize:AgoraVideoDimension640x360 frameRate:AgoraVideoFrameRateFps15 bitrate:AgoraVideoBitrateStandard orientationMode:AgoraVideoOutputOrientationModeAdaptative];
+		[kit setVideoEncoderConfiguration:conf];
 	}
 	return self;
 }
@@ -54,6 +67,70 @@
 	});
 	
 	return sharedModuleCall;
+}
+
+// MARK: - METHOD
+
+- (void)joinChannel:(NSString *)ochannel byToken:(NSString *)token {
+	
+	[kit joinChannelByToken:token channelId:ochannel info:nil uid:0 joinSuccess:^(NSString *channel, NSUInteger uid, NSInteger elapsed) {
+		NSLog(@"%@ %@ %@", channel, @(uid), @(elapsed));
+	}];
+}
+
+- (void)videoJoined:(void (^)(NSUInteger))respBlock {
+	blockJoined = respBlock;
+}
+
+- (void)setupLocalVideoView:(UIView *)localview andRemoteVideoView:(UIView *)remoteview {
+	
+	AgoraRtcVideoCanvas *localcanvas = [[AgoraRtcVideoCanvas alloc] init];
+	localcanvas.uid = 0;
+	localcanvas.renderMode = AgoraVideoRenderModeHidden;
+	if (localview != nil) {
+		localcanvas.view = localview;
+	}
+	[kit setupLocalVideo:localcanvas];
+	
+	AgoraRtcVideoCanvas *remotecanvas = [[AgoraRtcVideoCanvas alloc] init];
+//	remotecanvas.uid // TODO: NEED UID
+	remotecanvas.renderMode = AgoraVideoRenderModeHidden;
+	if (remoteview != nil) {
+		remotecanvas.view = remoteview;
+	}
+	[kit setupRemoteVideo:remotecanvas];
+	
+}
+
+- (void)leaveChannel {
+	[kit leaveChannel:^(AgoraChannelStats *stat) {
+		NSLog(@"%@", stat);
+	}];
+}
+
+- (void)destroy {
+	[AgoraRtcEngineKit destroy];
+}
+
+// MARK: - DELEGATE
+
+// MARK: AgoraRtcEngineDelegate
+
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine didOccurError:(AgoraErrorCode)errorCode {
+	NSLog(@"RTC ERROR %@", @(errorCode));
+}
+
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine didOccurWarning:(AgoraWarningCode)warningCode {
+	NSLog(@"RTC WARNING %@", @(warningCode));
+}
+
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine didJoinedOfUid:(NSUInteger)uid elapsed:(NSInteger)elapsed {
+	
+	if (blockJoined != nil) {
+		blockJoined(uid);
+	} else {
+		NSLog(@"BLOCK NOT FOUND");
+	}
 }
 
 @end

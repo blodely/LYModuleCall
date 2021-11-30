@@ -29,6 +29,7 @@
 
 #import "LYModuleCallingViewController.h"
 #import <LYCategory/LYCategory.h>
+#import "LYModuleCall.h"
 #import <LYModuleCall/LYModuleCallingView.h>
 
 
@@ -91,6 +92,8 @@
 		LYModuleCallingView *view = [[LYModuleCallingView alloc] initWithConfig:_config];
 		self.view = view;
 		vMain = view;
+		
+		[[LYModuleCall module] setupLocalVideoView:vMain.cLocal andRemoteVideoView:vMain.cRemote];
 	}
 }
 
@@ -105,8 +108,35 @@
 	}
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
+	[[LYModuleCall module] videoJoined:^(NSUInteger uid) {
+		NSLog(@"%@", @(uid));
+	}];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+	// TODO: JOIN
+	[[LYModuleCall module] joinChannel:@"" byToken:@""];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	
+	[[LYModuleCall module] leaveChannel];
+}
+
 // MARK: - METHOD
 // MARK: PRIVATE METHOD
+
+- (void)setupFlow {
+	
+	[LYModuleCall module];
+}
+
 // MARK: NETWORKING
 // MARK: PROPERTY
 // MARK: BLOCK
