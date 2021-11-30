@@ -79,13 +79,13 @@
 			// MAKE DEFAULT CONFIG
 			_config = [[LYModuleCallingViewConfig alloc] init];
 			
-//			_config.tintColor = [UIColor colorWithHex:@"" andAlpha:1.0];
-//			_config.cameraButtonOn = @"";
-//			_config.cameraButtonOff = @"";
-//			_config.micButtonOn = @"";
-//			_config.micButtonOff = @"";
-//			_config.toggleCameraButton = @"";
-//			_config.hangupButton = @"";
+			_config.tintColor = self.view.tintColor;
+			_config.cameraButtonOn = @"btn-ico-video-on";
+			_config.cameraButtonOff = @"btn-ico-video-off";
+			_config.micButtonOn = @"btn-ico-mic-on";
+			_config.micButtonOff = @"btn-ico-mic-off";
+			_config.toggleCameraButton = @"btn-ico-flip";
+			_config.hangupButton = @"btn-ico-hangup";
 		}
 		
 		LYModuleCallingView *view = [[LYModuleCallingView alloc] initWithConfig:_config];

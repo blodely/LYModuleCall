@@ -32,4 +32,6 @@
 
 @interface NSBundle (LYModuleCall)
 
++ (NSBundle *)moduleCallResourceBundle;
+
 @end

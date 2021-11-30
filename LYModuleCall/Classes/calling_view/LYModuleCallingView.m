@@ -30,6 +30,7 @@
 #import "LYModuleCallingView.h"
 #import <LYCategory/LYCategory.h>
 #import <LYModuleCall/LYModuleCallingViewConfig.h>
+#import "UIImage+LYModuleCall.h"
 
 
 @interface LYModuleCallingView () {
@@ -200,10 +201,10 @@
 	
 	if (config != nil) {
 		self.tintColor = config.tintColor;
-		[_btnCam setImage:[UIImage imageNamed:config.cameraButtonOn] forState:UIControlStateNormal];
-		[_btnMute setImage:[UIImage imageNamed:config.micButtonOn] forState:UIControlStateNormal];
-		[_btnFlip setImage:[UIImage imageNamed:config.toggleCameraButton] forState:UIControlStateNormal];
-		[_btnEnd setImage:[UIImage imageNamed:config.hangupButton] forState:UIControlStateNormal];
+		[_btnCam setImage:[UIImage templateInModCallNamed:config.cameraButtonOn] forState:UIControlStateNormal];
+		[_btnMute setImage:[UIImage templateInModCallNamed:config.micButtonOn] forState:UIControlStateNormal];
+		[_btnFlip setImage:[UIImage templateInModCallNamed:config.toggleCameraButton] forState:UIControlStateNormal];
+		[_btnEnd setImage:[UIImage templateInModCallNamed:config.hangupButton] forState:UIControlStateNormal];
 	}
 	
 	{

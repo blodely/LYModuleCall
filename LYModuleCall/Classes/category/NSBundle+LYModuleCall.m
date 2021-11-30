@@ -28,8 +28,13 @@
 //
 
 #import "NSBundle+LYModuleCall.h"
+#import "LYModuleCall.h"
 
 
 @implementation NSBundle (LYModuleCall)
+
++ (NSBundle *)moduleCallResourceBundle {
+	return [NSBundle bundleWithURL:[[NSBundle bundleForClass:[LYModuleCall class]] URLForResource:@"LYModuleCall" withExtension:@"bundle"]];
+}
 
 @end

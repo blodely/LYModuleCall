@@ -28,7 +28,28 @@
 //
 
 #import "UIImage+LYModuleCall.h"
+#import "NSBundle+LYModuleCall.h"
+
 
 @implementation UIImage (LYModuleCall)
+
++ (UIImage *)imageInModCallNamed:(NSString *)name {
+	
+	if (@available(iOS 13.0, *)) {
+		return [UIImage imageNamed:name inBundle:[NSBundle moduleCallResourceBundle] withConfiguration:nil];
+	} else {
+		return [UIImage imageNamed:name inBundle:[NSBundle moduleCallResourceBundle] compatibleWithTraitCollection:nil];
+	}
+}
+
++ (UIImage *)templateInModCallNamed:(NSString *)name {
+
+	if (@available(iOS 13.0, *)) {
+		return [[UIImage imageNamed:name inBundle:[NSBundle moduleCallResourceBundle] withConfiguration:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+	} else {
+		// FALLBACK ON EARLIER VERSIONS
+		return [[UIImage imageNamed:name inBundle:[NSBundle moduleCallResourceBundle] compatibleWithTraitCollection:nil] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+	}
+}
 
 @end

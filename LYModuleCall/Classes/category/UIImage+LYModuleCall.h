@@ -32,4 +32,8 @@
 
 @interface UIImage (LYModuleCall)
 
++ (UIImage *)imageInModCallNamed:(NSString *)name;
+
++ (UIImage *)templateInModCallNamed:(NSString *)name;
+
 @end
