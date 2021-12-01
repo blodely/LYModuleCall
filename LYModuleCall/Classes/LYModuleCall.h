@@ -39,17 +39,26 @@
 
 - (void)joinChannel:(NSString *)channel byToken:(NSString *)token;
 
-- (void)videoJoined:(void (^)(NSUInteger uid))respBlock;
-
 - (void)leaveChannel;
 
 - (void)destroy;
 
+// MARK: - EVENTS
+
+- (void)videoJoined:(void (^)(NSUInteger uid))respBlock;
+- (void)remoteLeaved:(void (^)(void))respBlock;
+
 @end
 
-// MARK: IMPORTANT! - MUST DEFINE THIS IN APP BEFORE INITIALIZATION.
-#ifndef AGORA_APP_ID
-	#define AGORA_APP_ID @"MUST DEFINE THIS IN APP BEFORE INITIALIZATION"
-#endif
+
+// MARK: - LYModuleCallConfig
+
+@interface LYModuleCallConfig : NSObject
++ (instancetype)config;
+@property (nonatomic, copy) NSString *agoraAppID;
+@property (nonatomic, copy) NSString *agoraChannal;
+@property (nonatomic, copy) NSString *agoraToken;
+@property (nonatomic, assign) NSUInteger agoraUid;
+@end
 
 #import <LYModuleCall/LYModuleCallingViewController.h>

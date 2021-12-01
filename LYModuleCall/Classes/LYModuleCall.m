@@ -39,6 +39,9 @@
 	__strong AgoraVideoEncoderConfiguration *conf;
 	
 	__strong LYCUInteger blockJoined;
+	__strong LYCCompletion blockRemoteLeaved;
+	
+	__strong AgoraRtcVideoCanvas *remotecv;
 }
 @end
 
@@ -49,11 +52,12 @@
 - (instancetype)init {
 	if (self = [super init]) {
 		
-		if ([AGORA_APP_ID isEmpty] || [AGORA_APP_ID isEqualToString:@"MUST DEFINE THIS IN APP BEFORE INITIALIZATION"]) {
+		NSString *appID = [LYModuleCallConfig config].agoraAppID;
+		if (appID == nil || [appID isEmpty]) {
 			NSLog(@"MODULE LYModuleCall ERROR - AGORA APP ID NOT DEFINED");
 		}
 		
-		kit = [AgoraRtcEngineKit sharedEngineWithAppId:AGORA_APP_ID delegate:self];
+		kit = [AgoraRtcEngineKit sharedEngineWithAppId:appID delegate:self];
 		
 		[kit enableVideo];
 		
@@ -83,10 +87,6 @@
 	}];
 }
 
-- (void)videoJoined:(void (^)(NSUInteger))respBlock {
-	blockJoined = respBlock;
-}
-
 - (void)setupLocalVideoView:(UIView *)localview andRemoteVideoView:(UIView *)remoteview {
 	
 	AgoraRtcVideoCanvas *localcanvas = [[AgoraRtcVideoCanvas alloc] init];
@@ -98,12 +98,13 @@
 	[kit setupLocalVideo:localcanvas];
 	
 	AgoraRtcVideoCanvas *remotecanvas = [[AgoraRtcVideoCanvas alloc] init];
-//	remotecanvas.uid // TODO: NEED UID
+//	remotecanvas.uid // MARK: NEED UID
 	remotecanvas.renderMode = AgoraVideoRenderModeHidden;
 	if (remoteview != nil) {
 		remotecanvas.view = remoteview;
 	}
-	[kit setupRemoteVideo:remotecanvas];
+//	[kit setupRemoteVideo:remotecanvas];
+	remotecv = remotecanvas;
 	
 }
 
@@ -115,6 +116,16 @@
 
 - (void)destroy {
 	[AgoraRtcEngineKit destroy];
+}
+
+// MARK: EVENT
+
+- (void)videoJoined:(void (^)(NSUInteger))respBlock {
+	blockJoined = respBlock;
+}
+
+- (void)remoteLeaved:(void (^)(void))respBlock {
+	blockRemoteLeaved = respBlock;
 }
 
 // MARK: - DELEGATE
@@ -131,11 +142,41 @@
 
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine didJoinedOfUid:(NSUInteger)uid elapsed:(NSInteger)elapsed {
 	
+	remotecv.uid = uid;
+	[kit setupRemoteVideo:remotecv];
+	
 	if (blockJoined != nil) {
 		blockJoined(uid);
 	} else {
 		NSLog(@"BLOCK NOT FOUND");
 	}
+}
+
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine didOfflineOfUid:(NSUInteger)uid reason:(AgoraUserOfflineReason)reason {
+	
+	remotecv.view = nil;
+	
+	if (blockRemoteLeaved != nil) {
+		blockRemoteLeaved();
+	} else {
+		NSLog(@"BLOCK NOT FOUND");
+	}
+}
+
+@end
+
+
+// MARK: - LYModuleCallConfig
+
+@implementation LYModuleCallConfig
+
++ (instancetype)config {
+	static LYModuleCallConfig *sharedLYModuleCallConfig;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sharedLYModuleCallConfig = [[LYModuleCallConfig alloc] init];
+	});
+	return sharedLYModuleCallConfig;
 }
 
 @end

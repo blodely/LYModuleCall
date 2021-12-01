@@ -28,11 +28,34 @@
 //
 
 #import "LYModuleCallingViewConfig.h"
+#import <LYCategory/LYCategory.h>
 
 
 @interface LYModuleCallingViewConfig () {}
 @end
 
 @implementation LYModuleCallingViewConfig
+
++ (instancetype)defaultConfig {
+	LYModuleCallingViewConfig *config = [[LYModuleCallingViewConfig alloc] init];
+	
+	config.themeColor = [UIColor colorWithHex:@"#0072ff" andAlpha:1.0];
+	
+	config.featureButtonBgColor = [UIColor colorWithHex:@"#f2f4f7" andAlpha:1.0];
+	config.featureButtonIcoColor = [UIColor lightGrayColor];
+	
+	config.hangupButtonBgColor = [UIColor colorWithHex:@"#ec4646" andAlpha:1];
+	//[UIColor colorWithHex:@"#e93232" andAlpha:1.0];
+	config.hangupButtonIcoColor = [UIColor colorWithHex:@"#ffffff" andAlpha:1.0];
+	
+	config.cameraButtonOn = @"btn-ico-video-on";
+	config.cameraButtonOff = @"btn-ico-video-off";
+	config.micButtonOn = @"btn-ico-mic-on";
+	config.micButtonOff = @"btn-ico-mic-off";
+	config.toggleCameraButton = @"btn-ico-flip";
+	config.hangupButton = @"btn-ico-hangup";
+	
+	return config;
+}
 
 @end

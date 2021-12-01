@@ -32,13 +32,32 @@
 
 @interface LYModuleCallingViewConfig : NSObject
 
+/// feature button: camera switch-on image
 @property (nonatomic, copy) NSString *cameraButtonOn;
+
+/// feature button: camera switch-off image
 @property (nonatomic, copy) NSString *cameraButtonOff;
+
+/// feature button: mic switch-on image
 @property (nonatomic, copy) NSString *micButtonOn;
+
+/// feature button: mic switch-off image
 @property (nonatomic, copy) NSString *micButtonOff;
+
+/// feature button: toggle camera image
 @property (nonatomic, copy) NSString *toggleCameraButton;
+
+/// feature button: hangup phone image
 @property (nonatomic, copy) NSString *hangupButton;
 
-@property (nonatomic, copy) UIColor *tintColor;
+@property (nonatomic, copy) UIColor *themeColor;
+
+@property (nonatomic, copy) UIColor *featureButtonBgColor;
+@property (nonatomic, copy) UIColor *featureButtonIcoColor;
+
+@property (nonatomic, copy) UIColor *hangupButtonBgColor;
+@property (nonatomic, copy) UIColor *hangupButtonIcoColor;
+
++ (instancetype)defaultConfig;
 
 @end
