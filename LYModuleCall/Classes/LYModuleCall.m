@@ -48,7 +48,12 @@
 
 - (instancetype)init {
 	if (self = [super init]) {
-		kit = [AgoraRtcEngineKit sharedEngineWithAppId:@"1359d5447c864c529e0a82422bc493b0" delegate:self];
+		
+		if ([AGORA_APP_ID isEmpty] || [AGORA_APP_ID isEqualToString:@"MUST DEFINE THIS IN APP BEFORE INITIALIZATION"]) {
+			NSLog(@"MODULE LYModuleCall ERROR - AGORA APP ID NOT DEFINED");
+		}
+		
+		kit = [AgoraRtcEngineKit sharedEngineWithAppId:AGORA_APP_ID delegate:self];
 		
 		[kit enableVideo];
 		

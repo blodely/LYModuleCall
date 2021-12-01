@@ -47,4 +47,9 @@
 
 @end
 
+// MARK: IMPORTANT! - MUST DEFINE THIS IN APP BEFORE INITIALIZATION.
+#ifndef AGORA_APP_ID
+	#define AGORA_APP_ID @"MUST DEFINE THIS IN APP BEFORE INITIALIZATION"
+#endif
+
 #import <LYModuleCall/LYModuleCallingViewController.h>
