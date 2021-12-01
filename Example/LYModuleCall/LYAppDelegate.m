@@ -17,10 +17,10 @@
     // Override point for customization after application launch.
 	
 	_window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-	
 	_window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[LYTestViewController alloc] init]];
-	
 	[_window makeKeyAndVisible];
+	
+	[[LYModuleCallConfig config] setAgoraAppID:@""];
 	
     return YES;
 }
