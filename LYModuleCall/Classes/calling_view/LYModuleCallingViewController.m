@@ -35,7 +35,6 @@
 
 @interface LYModuleCallingViewController () {
 	
-	__weak LYModuleCallingView *vMain;
 }
 @end
 
@@ -78,15 +77,7 @@
 	{
 		if (_config == nil) {
 			// MAKE DEFAULT CONFIG
-			_config = [[LYModuleCallingViewConfig alloc] init];
-			
-			_config.tintColor = self.view.tintColor;
-			_config.cameraButtonOn = @"btn-ico-video-on";
-			_config.cameraButtonOff = @"btn-ico-video-off";
-			_config.micButtonOn = @"btn-ico-mic-on";
-			_config.micButtonOff = @"btn-ico-mic-off";
-			_config.toggleCameraButton = @"btn-ico-flip";
-			_config.hangupButton = @"btn-ico-hangup";
+			_config = [LYModuleCallingViewConfig defaultConfig];
 		}
 		
 		LYModuleCallingView *view = [[LYModuleCallingView alloc] initWithConfig:_config];
@@ -113,14 +104,15 @@
 	
 	[[LYModuleCall module] videoJoined:^(NSUInteger uid) {
 		NSLog(@"%@", @(uid));
+		
 	}];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	
-	// TODO: JOIN
-	[[LYModuleCall module] joinChannel:@"" byToken:@""];
+	// JOIN
+	[[LYModuleCall module] joinChannel:_agChannel byToken:_agToken];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -131,11 +123,6 @@
 
 // MARK: - METHOD
 // MARK: PRIVATE METHOD
-
-- (void)setupFlow {
-	
-	[LYModuleCall module];
-}
 
 // MARK: NETWORKING
 // MARK: PROPERTY

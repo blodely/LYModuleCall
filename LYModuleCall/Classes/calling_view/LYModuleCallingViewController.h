@@ -29,10 +29,17 @@
 
 #import <UIKit/UIKit.h>
 #import <LYModuleCall/LYModuleCallingViewConfig.h>
+#import <LYModuleCall/LYModuleCallingView.h>
 
 
-@interface LYModuleCallingViewController : UIViewController
+@interface LYModuleCallingViewController : UIViewController {
+	
+	__weak LYModuleCallingView *vMain;
+}
 
 @property (nonatomic, copy) LYModuleCallingViewConfig *config;
+
+@property (nonatomic, copy) NSString *agChannel;
+@property (nonatomic, copy) NSString *agToken;
 
 @end

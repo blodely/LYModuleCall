@@ -63,6 +63,11 @@
 		
 		conf = [[AgoraVideoEncoderConfiguration alloc] initWithSize:AgoraVideoDimension640x360 frameRate:AgoraVideoFrameRateFps15 bitrate:AgoraVideoBitrateStandard orientationMode:AgoraVideoOutputOrientationModeAdaptative];
 		[kit setVideoEncoderConfiguration:conf];
+		
+		AgoraBeautyOptions *opts = [[AgoraBeautyOptions alloc] init];
+		opts.lighteningLevel = 0.8;
+		opts.smoothnessLevel = 0.6;
+		[kit setBeautyEffectOptions:YES options:opts];
 	}
 	return self;
 }

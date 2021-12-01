@@ -95,6 +95,7 @@
 		UIControl *view = [[UIControl alloc] init];
 		view.frame = (CGRect){0, 0, floor(WIDTH * 0.25), floor(WIDTH * 0.25 * 1.33)};
 		view.translatesAutoresizingMaskIntoConstraints = NO;
+		[view roundedCornerRadius:10];
 		[self addSubview:view];
 		_cLocal = view;
 		
@@ -122,6 +123,7 @@
 		CGFloat radius = 30;
 		
 		{
+			// MARK: CAMERA ON/OFF BUTTON
 			UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
 			view.translatesAutoresizingMaskIntoConstraints = NO;
 			[view roundedCornerRadius:radius];
@@ -135,6 +137,7 @@
 		}
 		
 		{
+			// MARK: MICROPHONE ON/OFF BUTTON
 			UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
 			view.translatesAutoresizingMaskIntoConstraints = NO;
 			[view roundedCornerRadius:radius];
@@ -148,6 +151,7 @@
 		}
 		
 		{
+			// MARK: FLIP CAMERA BUTTON
 			UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
 			view.translatesAutoresizingMaskIntoConstraints = NO;
 			[view roundedCornerRadius:radius];
@@ -161,6 +165,7 @@
 		}
 		
 		{
+			// MARK: END CALL BUTTON
 			UIButton *view = [UIButton buttonWithType:UIButtonTypeCustom];
 			view.translatesAutoresizingMaskIntoConstraints = NO;
 			[view roundedCornerRadius:radius];
@@ -200,28 +205,23 @@
 		}
 	}
 	
-	if (config != nil) {
-		self.tintColor = config.tintColor;
+	// MARK: CONFIGURE DEFAULT CONTROLS STYLE
+	if (config == nil) {
+		config = [LYModuleCallingViewConfig defaultConfig];
+	}
+	
+	{
+		_btnCam.tintColor = _btnMute.tintColor = _btnFlip.tintColor = config.featureButtonIcoColor;
+		_btnCam.backgroundColor = _btnMute.backgroundColor = _btnFlip.backgroundColor = config.featureButtonBgColor;
+		
 		[_btnCam setImage:[UIImage templateInModCallNamed:config.cameraButtonOn] forState:UIControlStateNormal];
 		[_btnMute setImage:[UIImage templateInModCallNamed:config.micButtonOn] forState:UIControlStateNormal];
 		[_btnFlip setImage:[UIImage templateInModCallNamed:config.toggleCameraButton] forState:UIControlStateNormal];
+		
+		_btnEnd.tintColor = config.hangupButtonIcoColor;
+		_btnEnd.backgroundColor = config.hangupButtonBgColor;
 		[_btnEnd setImage:[UIImage templateInModCallNamed:config.hangupButton] forState:UIControlStateNormal];
 	}
-	
-	/*
-	{
-		for (UIView *one in self.subviews) {
-			if ([one isKindOfClass:[UIButton class]] || [one isKindOfClass:[UIControl class]]) {
-				[one border1Px];
-			}
-			for (UIView *two in one.subviews) {
-				if ([two isKindOfClass:[UIButton class]]) {
-					[two border1Px];
-				}
-			}
-		}
-	}
-	*/
 }
 
 @end
