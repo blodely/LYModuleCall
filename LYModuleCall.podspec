@@ -34,6 +34,6 @@ TODO: Add long description of the pod here.
   
   s.dependency 'LYCategory'
   
-  s.dependency 'AgoraRtcEngine_iOS'
+  s.dependency 'AgoraRtcEngine_iOS', '~> 3.6.0'
 	
 end
