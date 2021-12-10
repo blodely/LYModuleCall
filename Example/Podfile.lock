@@ -1,8 +1,8 @@
 PODS:
-  - AgoraRtcEngine_iOS (3.5.2)
+  - AgoraRtcEngine_iOS (3.6.0)
   - LYCategory (1.13.1)
   - LYModuleCall (0.1.0):
-    - AgoraRtcEngine_iOS
+    - AgoraRtcEngine_iOS (~> 3.6.0)
     - LYCategory
 
 DEPENDENCIES:
@@ -18,9 +18,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  AgoraRtcEngine_iOS: 3d13806d67e401298558c9a6fb09340a4299afa2
+  AgoraRtcEngine_iOS: fa786b97866b6017722de00500eead7224ac6afd
   LYCategory: 106df397b4b514a8cbe7f228c34a503142d3b964
-  LYModuleCall: f814eefbc96e309d75a821d8ef1b29f323840dce
+  LYModuleCall: b4d68f47d9d34b4cb7b463a69bdb45699bbfe84f
 
 PODFILE CHECKSUM: 639e53e55da59d22d680478226f53a2533b24115
 
