@@ -19,7 +19,7 @@
 
 - (void)callButtonPressed:(id)sender {
 	
-	LYModuleCallingViewController *vc = [[LYModuleCallingViewController alloc] init];
+	LYMCallingViewController *vc = [[LYMCallingViewController alloc] init];
 	vc.agChannel = @"";
 	vc.agToken = @"";
 	[self presentViewController:vc animated:YES completion:^{}];

@@ -1,5 +1,5 @@
 //
-//  LYModuleCallingViewController.h
+//  LYMCallingViewController.h
 //  LYModuleCall
 //
 //  Created by Luo Yu on 2021-08-07.
@@ -32,7 +32,7 @@
 #import <LYModuleCall/LYModuleCallingView.h>
 
 
-@interface LYModuleCallingViewController : UIViewController {
+@interface LYMCallingViewController : UIViewController {
 	
 	__weak LYModuleCallingView *vMain;
 }

@@ -61,4 +61,4 @@
 @property (nonatomic, assign) NSUInteger agoraUid;
 @end
 
-#import <LYModuleCall/LYModuleCallingViewController.h>
+#import <LYModuleCall/LYMCallingViewController.h>

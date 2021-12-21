@@ -1,5 +1,5 @@
 //
-//  LYModuleCallingViewController.m
+//  LYMCallingViewController.m
 //  LYModuleCall
 //
 //  Created by Luo Yu on 2021-08-07.
@@ -27,18 +27,18 @@
 //	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "LYModuleCallingViewController.h"
+#import "LYMCallingViewController.h"
 #import <LYCategory/LYCategory.h>
 #import "LYModuleCall.h"
 #import <LYModuleCall/LYModuleCallingView.h>
 
 
-@interface LYModuleCallingViewController () {
+@interface LYMCallingViewController () {
 	
 }
 @end
 
-@implementation LYModuleCallingViewController
+@implementation LYMCallingViewController
 
 // MARK: - ACTION
 
