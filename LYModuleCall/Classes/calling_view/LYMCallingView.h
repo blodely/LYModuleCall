@@ -1,5 +1,5 @@
 //
-//  LYModuleCallingView.h
+//  LYMCallingView.h
 //  LYModuleCall
 //
 //  Created by Luo Yu on 2021-08-07.
@@ -31,7 +31,7 @@
 #import <LYModuleCall/LYModuleCallingViewConfig.h>
 
 
-@interface LYModuleCallingView : UIView
+@interface LYMCallingView : UIView
 
 @property (weak, nonatomic) UIControl *cRemote;
 @property (weak, nonatomic) UIControl *cLocal;

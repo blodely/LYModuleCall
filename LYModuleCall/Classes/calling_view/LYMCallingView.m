@@ -1,5 +1,5 @@
 //
-//  LYModuleCallingView.m
+//  LYMCallingView.m
 //  LYModuleCall
 //
 //  Created by Luo Yu on 2021-08-07.
@@ -27,13 +27,13 @@
 //	CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "LYModuleCallingView.h"
+#import "LYMCallingView.h"
 #import <LYCategory/LYCategory.h>
 #import <LYModuleCall/LYModuleCallingViewConfig.h>
 #import "UIImage+LYModuleCall.h"
 
 
-@interface LYModuleCallingView () {
+@interface LYMCallingView () {
 	
 	__strong LYModuleCallingViewConfig *config;
 	
@@ -41,7 +41,7 @@
 }
 @end
 
-@implementation LYModuleCallingView
+@implementation LYMCallingView
 
 - (instancetype)initWithConfig:(LYModuleCallingViewConfig *)theconfig {
 	if (self = [super initWithFrame:(CGRect){0, 0, WIDTH, HEIGHT}]) {

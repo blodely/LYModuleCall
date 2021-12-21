@@ -29,12 +29,12 @@
 
 #import <UIKit/UIKit.h>
 #import <LYModuleCall/LYModuleCallingViewConfig.h>
-#import <LYModuleCall/LYModuleCallingView.h>
+#import <LYModuleCall/LYMCallingView.h>
 
 
 @interface LYMCallingViewController : UIViewController {
 	
-	__weak LYModuleCallingView *vMain;
+	__weak LYMCallingView *vMain;
 }
 
 @property (nonatomic, copy) LYModuleCallingViewConfig *config;

@@ -30,7 +30,7 @@
 #import "LYMCallingViewController.h"
 #import <LYCategory/LYCategory.h>
 #import "LYModuleCall.h"
-#import <LYModuleCall/LYModuleCallingView.h>
+#import <LYModuleCall/LYMCallingView.h>
 
 
 @interface LYMCallingViewController () {
@@ -80,7 +80,7 @@
 			_config = [LYModuleCallingViewConfig defaultConfig];
 		}
 		
-		LYModuleCallingView *view = [[LYModuleCallingView alloc] initWithConfig:_config];
+		LYMCallingView *view = [[LYMCallingView alloc] initWithConfig:_config];
 		self.view = view;
 		vMain = view;
 		
