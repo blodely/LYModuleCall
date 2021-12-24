@@ -1,19 +1,31 @@
+##############################################################################
 #
 # Created by Rick Luo on 2021/08/07.
 # Copyright © 2021 Rick Luo. All rights reserved.
 #
-
+##############################################################################
 source 'https://github.com/CocoaPods/Specs.git'
-
 use_frameworks!
-
 platform :ios, '11.0'
-
-target 'LYModuleCall_Example' do
-  pod 'LYModuleCall', :path => '../'
-
+##############################################################################
+def ghpods
 end
-
+##############################################################################
+def lypods
+#	pod 'LYCategory'
+#	pod 'LYFactAppCommon'
+end
+##############################################################################
+def bdpods
+	pod 'LYModuleCall', :path => '../'
+end
+##############################################################################
+target 'LYModuleCall_Example' do
+	ghpods
+	lypods
+	bdpods
+end
+##############################################################################
 # MODIFY PODS PROJECT,
 # RESET PROJECT BUILD TARGET OS VERSION.
 post_install do |installer|
