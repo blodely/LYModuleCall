@@ -33,8 +33,8 @@ TODO: Add long description of the pod here.
   s.frameworks = 'UIKit', 'AVFoundation'
   
   s.dependency 'LYCategory'
-  s.dependency 'LYFactAppCommon'
+  s.dependency 'LYFactAppCommon', '~> 1.0.21'
   
-  s.dependency 'AgoraRtcEngine_iOS', '~> 3.6.0'
+  s.dependency 'AgoraRtcEngine_iOS', '= 3.6.2.2'
 	
 end
