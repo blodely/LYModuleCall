@@ -24,7 +24,7 @@ TODO: Add long description of the pod here.
   
   s.resource_bundles = {
 #   'LYModuleCall' => ['LYModuleCall/Assets/*.png']
-    'LYModuleCall' => ['LYModuleCall/Assets/*.xcassets']
+    'LYModuleCall' => ['LYModuleCall/Assets/*.xcassets', 'LYModuleCall/Classes/**/*.xib']
   }
 # s.resources = 'LYModuleCall/Assets/*.xcassets'
 
