@@ -174,29 +174,30 @@
 		}
 		
 		{
-			UILayoutGuide *layoutguide[5];
+			// MARK: LAYOUT BUTTONS
+			UILayoutGuide *guide[5];
 			for (NSInteger i = 0; i < 5; i++) {
-				layoutguide[i] = [[UILayoutGuide alloc] init];
-				[vControls addLayoutGuide:layoutguide[i]];
+				guide[i] = [[UILayoutGuide alloc] init];
+				[vControls addLayoutGuide:guide[i]];
 				
-				[layoutguide[i].heightAnchor constraintEqualToConstant:1].active = YES;
-				[layoutguide[i].centerYAnchor constraintEqualToAnchor:vControls.centerYAnchor].active = YES;
+				[guide[i].heightAnchor constraintEqualToConstant:1].active = YES;
+				[guide[i].centerYAnchor constraintEqualToAnchor:vControls.centerYAnchor].active = YES;
 				
 				if (i > 0) {
-					[layoutguide[i].widthAnchor constraintEqualToAnchor:layoutguide[i - 1].widthAnchor].active = YES;
+					[guide[i].widthAnchor constraintEqualToAnchor:guide[i - 1].widthAnchor].active = YES;
 				}
 			}
 			
-			[layoutguide[0].leftAnchor constraintEqualToAnchor:vControls.leftAnchor].active = YES;
-			[layoutguide[0].trailingAnchor constraintEqualToAnchor:_btnCam.leadingAnchor].active = YES;
-			[layoutguide[1].leadingAnchor constraintEqualToAnchor:_btnCam.trailingAnchor].active = YES;
-			[layoutguide[1].trailingAnchor constraintEqualToAnchor:_btnMute.leadingAnchor].active = YES;
-			[layoutguide[2].leadingAnchor constraintEqualToAnchor:_btnMute.trailingAnchor].active = YES;
-			[layoutguide[2].trailingAnchor constraintEqualToAnchor:_btnFlip.leadingAnchor].active = YES;
-			[layoutguide[3].leadingAnchor constraintEqualToAnchor:_btnFlip.trailingAnchor].active = YES;
-			[layoutguide[3].trailingAnchor constraintEqualToAnchor:_btnEnd.leadingAnchor].active = YES;
-			[layoutguide[4].leadingAnchor constraintEqualToAnchor:_btnEnd.trailingAnchor].active = YES;
-			[layoutguide[4].rightAnchor constraintEqualToAnchor:vControls.rightAnchor].active = YES;
+			[guide[0].leftAnchor constraintEqualToAnchor:vControls.leftAnchor].active = YES;
+			[guide[0].trailingAnchor constraintEqualToAnchor:_btnCam.leadingAnchor].active = YES;
+			[guide[1].leadingAnchor constraintEqualToAnchor:_btnCam.trailingAnchor].active = YES;
+			[guide[1].trailingAnchor constraintEqualToAnchor:_btnMute.leadingAnchor].active = YES;
+			[guide[2].leadingAnchor constraintEqualToAnchor:_btnMute.trailingAnchor].active = YES;
+			[guide[2].trailingAnchor constraintEqualToAnchor:_btnFlip.leadingAnchor].active = YES;
+			[guide[3].leadingAnchor constraintEqualToAnchor:_btnFlip.trailingAnchor].active = YES;
+			[guide[3].trailingAnchor constraintEqualToAnchor:_btnEnd.leadingAnchor].active = YES;
+			[guide[4].leadingAnchor constraintEqualToAnchor:_btnEnd.trailingAnchor].active = YES;
+			[guide[4].rightAnchor constraintEqualToAnchor:vControls.rightAnchor].active = YES;
 		}
 	}
 	
