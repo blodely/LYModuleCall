@@ -33,12 +33,7 @@
 #import "UIImage+LYModuleCall.h"
 
 
-@interface LYMCallingView () {
-	
-	__strong LYModuleCallingViewConfig *config;
-	
-	__weak UIView *vControls;
-}
+@interface LYMCallingView () {}
 @end
 
 @implementation LYMCallingView

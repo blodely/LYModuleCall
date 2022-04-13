@@ -31,7 +31,12 @@
 #import <LYModuleCall/LYModuleCallingViewConfig.h>
 
 
-@interface LYMCallingView : UIView
+@interface LYMCallingView : UIView {
+	
+	__strong LYModuleCallingViewConfig *config;
+	
+	__weak UIView *vControls;
+}
 
 @property (weak, nonatomic) UIControl *cRemote;
 @property (weak, nonatomic) UIControl *cLocal;
